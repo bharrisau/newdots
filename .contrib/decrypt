@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+cp .contrib/gitattributes .git/info/attributes
+
+echo -n "Enter your passphrase: "
+read -s PASS
+echo
+git config gitcrypt.salt "0000000000000000"
+git config gitcrypt.pass "$PASS"
+git config gitcrypt.cipher "aes-256-ecb"
+gitcrypt enable
+
+git reset --hard HEAD
