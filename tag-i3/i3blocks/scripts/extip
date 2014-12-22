@@ -1,0 +1,13 @@
+#!/bin/bash
+
+IP=$(curl -s icanhazip.com)
+if [[ $IP == "" ]]; then
+  echo "NA"
+  echo "NA"
+  echo "#ff0000"
+else
+  echo $IP
+  echo ""
+  echo "#00ff00"
+fi
+  

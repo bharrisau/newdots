@@ -1,0 +1,64 @@
+command=~/.i3blocks/scripts/$BLOCK_NAME
+interval=5
+separator_block_width=15
+
+[ssh-key]
+command=$(ssh-add -l > /dev/null) && echo "Y" || echo "N"
+
+[volume]
+signal=10
+
+[memory]
+command=/usr/libexec/i3blocks/memory
+separator=false
+interval=30
+
+[swap]
+command=/usr/libexec/i3blocks/memory
+instance=swap
+interval=30
+
+[disk-home]
+command=/usr/libexec/i3blocks/disk $HOME 20
+interval=30
+
+[wireless]
+command=/usr/libexec/i3blocks/network
+instance=wlan0
+color=#00FF00
+interval=10
+separator=false
+
+[wireless]
+command=[[ $(iwgetid -r) == "" ]] && echo "" || iwgetid -r
+interval=10
+color=#00FF00
+separator=false
+
+[ethernet]
+command=/usr/libexec/i3blocks/network instance=net0 E
+color=#00FF00
+interval=10
+#separator=false
+
+#[extip]
+#interval=6000
+
+[cpu]
+command=/usr/libexec/i3blocks/cpu_usage
+interval=10
+
+[battery]
+command=/usr/libexec/i3blocks/battery BAT1 20
+interval=30
+
+[workrave]
+interval=1
+
+[time]
+command=date '+%d %b %Y %l:%M %p %Z'
+separator=false
+
+#[time1]
+#command=TZ=America/Santiago date '+%l:%M %p %Z'
+

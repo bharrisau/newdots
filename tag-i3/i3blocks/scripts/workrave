@@ -1,0 +1,71 @@
+#!/bin/bash
+
+SESSION_BUS="org.workrave.Workrave"
+METHOD_ROOT="/org/workrave/Workrave"
+CORE_INTERFACE="$METHOD_ROOT/Core org.workrave.CoreInterface"
+CONTROL_INTERFACE="$METHOD_ROOT/UI org.workrave.ControlInterface"
+APPLET_INTERFACE="$METHOD_ROOT/UI org.workrave.AppletInterface"
+CONFIG_INTERFACE="$METHOD_ROOT/Core org.workrave.ConfigInterface"
+
+#Mode is GetOperationMode in CoreInterface
+#Rest break is RestBreak in ControlInterface
+try() {
+  if [ -z "$1" ]; then
+    exit
+  fi
+  if ! ret=$(qdbus $SESSION_BUS $@) ; then
+    kill $$
+  fi
+  echo $ret
+}
+
+seconds_to_readable() {
+  local secs="${1#-}"
+  if [ "$1" -lt 0 ]; then
+    echo -n "-"
+  fi
+  h=$((secs/3600))
+  m=$((secs%3600/60))
+  s=$((secs%60))
+  if [ "$h" -gt 0 ]; then
+    echo -n "$h:"
+  fi
+  printf "%02d:%02d\n" $m $s
+}
+
+mode=$(try "$CORE_INTERFACE.GetOperationMode")
+
+case "$BLOCK_BUTTON" in
+  1)
+    $(try "$CONTROL_INTERFACE.RestBreak")
+    ;;
+  3)
+    if [ "$mode" == "normal" ]; then
+      $(try "$CORE_INTERFACE.SetOperationMode" "quiet")
+      echo "quiet"
+      exit 0
+    else
+      $(try "$CORE_INTERFACE.SetOperationMode" "normal")
+      echo "normal"
+      exit 0
+    fi
+    ;;
+esac
+
+restbreak_limit="$(try "$CONFIG_INTERFACE.GetInt" "timers/rest_break/limit" |tr -d [:blank:][:alpha:])"
+restbreak_current="$(try "$CORE_INTERFACE.GetTimerElapsed" "restbreak")"
+next_restbreak=$((restbreak_limit - restbreak_current))
+
+if [ "$mode" == "quiet" ]; then
+  echo -n "Q "
+fi
+
+echo $(seconds_to_readable $next_restbreak)
+echo ""
+if [ "$next_restbreak" -lt 0 ]; then
+  echo "#ff0000"
+elif [ "$next_restbreak" -lt 300 ]; then
+  echo "#FF8E0D"
+else
+  echo "#ffffff"
+fi
