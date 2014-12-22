@@ -1,6 +1,6 @@
 #!/bin/sh
 
-: ${RCM_LIB:=$(dirname "$0")/rcm}
+: ${RCM_LIB:=$(dirname "$0")/../share/rcm}
 . "$RCM_LIB/rcm.sh"
 
 link_or_copy() {

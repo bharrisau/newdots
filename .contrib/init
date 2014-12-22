@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Set up .rcrc file
+cp -n $(dirname "$0")/rcrc $HOME/.rcrc 2>/dev/null
+
+# Run mkup
+PATH=$PATH:$(pwd)/$(dirname "$0")/../local/bin
+rcup $*

@@ -1,3 +1,6 @@
+# Default PATH
+PATH=$PATH:$HOME/.local/bin
+
 # Default editor
 EDITOR=vim
 export EDITOR
