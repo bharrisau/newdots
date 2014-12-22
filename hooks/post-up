@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# If .zshrc.load exists, make sure loader is appended
+
+if [ -e "$HOME/.zshrc.load" ]; then
+  if ! grep -Fq zshrc.load "$HOME/.zshrc"; then
+    echo '. $HOME/.zshrc.load' >> $HOME/.zshrc
+  fi
+fi
