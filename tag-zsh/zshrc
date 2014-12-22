@@ -1,0 +1,17 @@
+# More minimal zsh based on https://github.com/ivyl/zsh-config/blob/master/zshrc
+
+[ -z "$PS1" ] && return
+
+DEFAULT_USER=ben
+
+# Config collections (none at the moment)
+. ~/.zsh/aliases.zsh
+. ~/.zsh/prompt.zsh
+. ~/.zsh/completion.zsh
+. ~/.zsh/zbell.zsh
+
+# Accrue settings in a custom until it is worth moving to a config
+[ -e ~/.zsh/custom.zsh ] && . ~/.zsh/custom.zsh
+
+# newly opened terminal should clean prompt
+true
