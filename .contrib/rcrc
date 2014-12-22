@@ -1,1 +1,2 @@
 EXCLUDES="README.md"
+COPY_ALWAYS="ssh/*"
