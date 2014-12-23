@@ -1,0 +1,50 @@
+call pathogen#infect()
+syntax enable
+scriptencoding utf-8
+set encoding=utf-8
+" Wrap gitcommit file types at the appropriate length
+filetype indent plugin on
+
+" Bad habits
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" Rid of escape
+inoremap jk <esc>
+inoremap kj <esc>
+
+set background=dark
+colorscheme solarized
+set spelllang=en_gb
+
+set hidden
+set listchars=tab:»\ ,eol:¬,trail:·
+set ts=2 sts=2 sw=2 expandtab
+set cc=78
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " Enable file type detection
+  filetype on
+   
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+   
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType rust setlocal ts=2 sts=2 sw=2 expandtab
+   
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+  autocmd BufRead,BufNewFile *.adoc,*.asciidoc,README,TODO,CHANGELOG,NOTES,ABOUT
+          \ setlocal autoindent expandtab tabstop=8 softtabstop=2 shiftwidth=2 filetype=asciidoc
+          \ textwidth=70 wrap formatoptions=tcqn spell
+          \ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*[ivxIVX]\\+\\.\\s\\+
+          \ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>
+endif

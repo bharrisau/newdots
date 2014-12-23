@@ -1,0 +1,12 @@
+[submodule "tag-vim/vim/bundle/vim-coffee-script"]
+	path = tag-vim/vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "tag-vim/vim/bundle/vim-jade"]
+	path = tag-vim/vim/bundle/vim-jade
+	url = https://github.com/digitaltoad/vim-jade.git
+[submodule "tag-vim/vim/bundle/vim-fugitive"]
+	path = tag-vim/vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "tag-vim/vim/bundle/vim-ycm"]
+	path = tag-vim/vim/bundle/vim-ycm
+	url = https://github.com/Valloric/YouCompleteMe.git

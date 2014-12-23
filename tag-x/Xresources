@@ -1,0 +1,160 @@
+! Xft settings
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! urxvt
+URxvt.urgentOnBell: True
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*underlineColor: yellow
+URxvt*font:  xft:Inconsolata for Powerline:size=11:antialias=true
+URxvt*depth: 32
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*loginShell: true
+URxvt*secondaryScroll:  true    # Enable Shift-PageUp/Down in screen
+URxvt*saveLines: 5000
+URxvt*termName: rxvt-unicode
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: /usr/bin/chromium
+URxvt.matcher.button: 1
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
+URxvt.intensityStyles: false
+
+! Tomorrow theme
+!  #define base00 #1d1f21
+!  #define base01 #282a2e
+!  #define base02 #373b41
+!  #define base03 #969896
+!  #define base04 #b4b7b4
+!  #define base05 #c5c8c6
+!  #define base06 #e0e0e0
+!  #define base07 #ffffff
+!  #define base08 #cc6666
+!  #define base09 #de935f
+!  #define base0A #f0c674
+!  #define base0B #b5bd68
+!  #define base0C #8abeb7
+!  #define base0D #81a2be
+!  #define base0E #b294bb
+!  #define base0F #a3685a
+
+! Tomorrow-bright
+!  #define t_cursor #aeafad
+!  #define t_foreground #eaeaea
+!  #define t_background #000000
+!  #define base00 #000000
+!  #define base01 #9ec400
+!  #define base02 #e7c547
+!  #define base03 #666666
+!  #define base04 #7aa6da
+!  #define base05 #c5c8c6
+!  #define base06 #b777e0
+!  #define base07 #ffffff
+!  #define base08 #d54e53
+!  #define base09 #ff3334
+!  #define base0A #e78c45
+!  #define base0B #b9ca4a
+!  #define base0C #70c0b1
+!  #define base0D #7aa6da
+!  #define base0E #c397d8
+!  #define base0F #54ced6
+
+!  *foreground:            base05
+!  *background:            base00
+!  *cursorColor:           base05
+!  ! *pointerColorBackground:base01
+!  ! *pointerColorForeground:base0F
+!  
+!  !! black dark/light
+!  *color0:                base00
+!  *color8:                base03
+!  
+!  !! red dark/light
+!  *color1:                base08
+!  *color9:                base09
+!  
+!  !! green dark/light
+!  *color2:                base0B
+!  *color10:               base01
+!  
+!  !! yellow dark/light
+!  *color3:                base0A
+!  *color11:               base02
+!  
+!  !! blue dark/light
+!  *color4:                base0D
+!  *color12:               base04
+!  
+!  !! magenta dark/light
+!  *color5:                base0E
+!  *color13:               base06
+!  
+!  !! cyan dark/light
+!  *color6:                base0C
+!  *color14:               base0F
+!  
+!  !! white dark/light
+!  *color7:                base05
+!  *color15:               base07
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+*background:            S_base03
+*foreground:            S_base00
+*fading:                40
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
