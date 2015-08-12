@@ -25,6 +25,7 @@ alias -g .....='../../../../' #cd .....
 
 #sprunge paste service
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+alias ix="curl -F 'f:1=<-' bharrisau:R9Tpc690NB@ix.io"
 
 #common arch aliases
 alias p="yaourt"
@@ -39,5 +40,5 @@ alias wifi="sudo wifi"
 alias bluetooth="sudo bluetooth"
 alias wwan="sudo wwan"
 
-alias suspend="slimlock & sc suspend"
-alias hibernate="slimlock & sc hibernate"
+alias suspend="xlock  & sc suspend"
+alias hibernate="xlock & sc hibernate"

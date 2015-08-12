@@ -13,6 +13,10 @@ export BROWSER
 LEDGER=~/ledger/personal.dat
 export LEDGER
 
+# ls colours
+LS_COLORS='ow=37;42'
+export LS_COLORS
+
 # Some aliases
 
 # ZMV for mass renaming
@@ -20,11 +24,10 @@ autoload -Uz zmv
 
 # History options
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=20000
+SAVEHIST=20000
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
@@ -106,3 +109,26 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+wiki() {
+    curl -s -G 'http://en.wikipedia.org/w/api.php?continue=&action=query&prop=extracts&exintro=&explaintext=&format=json&redirects' --data-urlencode titles="$*" | jq -r '.query.pages[].extract' | fold -s -w 80
+}
+
+TIME_SHEET=time_sheet.tsv
+
+function inn() {
+    if [[ ! -f $TIME_SHEET || "$(tail -n 1 $TIME_SHEET)" =~ ^STOP.* ]];
+    then echo -e "START\t$(date)" >> $TIME_SHEET;
+         tail -n 1 $TIME_SHEET;
+    else echo "already inn!";
+    fi
+}
+
+function out() {
+    tail -n 1 $TIME_SHEET;
+    if [[ "$(tail -n 1 $TIME_SHEET)" =~ ^START.* ]];
+    then echo -e "STOP\t$(date)" >> $TIME_SHEET;
+         tail -n 1 $TIME_SHEET;
+    else echo "not inn!";
+    fi
+}

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export QT_SELECT=4
 SESSION_BUS="org.workrave.Workrave"
 METHOD_ROOT="/org/workrave/Workrave"
 CORE_INTERFACE="$METHOD_ROOT/Core org.workrave.CoreInterface"
@@ -60,9 +61,27 @@ if [ "$mode" == "quiet" ]; then
   echo -n "Q "
 fi
 
+if [ "$next_restbreak" -eq 15 ]; then
+  screen-flash 1 &
+fi
+
+if [ -e /tmp/wr.timer ]; then
+  last=$(cat /tmp/wr.timer)
+  if [ "$last" -lt "$next_restbreak" ]; then
+    screen-flash 4 &
+  fi
+fi
+
+echo -n $next_restbreak > /tmp/wr.timer
+
 echo $(seconds_to_readable $next_restbreak)
 echo ""
 if [ "$next_restbreak" -lt 0 ]; then
+  if [ "$((next_restbreak % 300))" -eq 0 ]; then
+    screen-flash 3 &
+  elif [ "$((next_restbreak % 30))" -eq 0 ]; then
+    screen-flash 2 &
+  fi
   echo "#ff0000"
 elif [ "$next_restbreak" -lt 300 ]; then
   echo "#FF8E0D"

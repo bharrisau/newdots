@@ -72,6 +72,10 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute && killall -U
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
+# keyboard controls
+bindsym XF86KbdBrightnessDown exec kbd_backlight -1
+bindsym XF86KbdBrightnessUp exec kbd_backlight 1
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -187,6 +191,7 @@ bindsym $mod+Shift+Insert mode "ignore"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
+    bindsym f exec --no-startup-id /usr/lib/qt4/bin/qdbus org.workrave.Workrave /org/workrave/Workrave/UI org.workrave.ControlInterface.RestBreak, mode "default"
     bindsym l exec --no-startup-id xlock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id i3-msg 'exec xlock && exec systemctl suspend', mode "default"

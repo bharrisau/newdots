@@ -2,6 +2,10 @@ command=~/.i3blocks/scripts/$BLOCK_NAME
 interval=5
 separator_block_width=15
 
+[toggl]
+command=~/.local/bin/toggl now
+interval=10
+
 [ssh-key]
 command=$(ssh-add -l > /dev/null) && echo "Y" || echo "N"
 
@@ -19,7 +23,13 @@ instance=swap
 interval=30
 
 [disk-home]
-command=/usr/libexec/i3blocks/disk $HOME 20
+command=/usr/libexec/i3blocks/disk 20
+separator=false
+interval=30
+
+[disk-root]
+command=/usr/libexec/i3blocks/disk 20
+instance=/
 interval=30
 
 [wireless]
@@ -56,7 +66,7 @@ interval=30
 interval=1
 
 [time]
-command=date '+%d %b %Y %l:%M %p %Z'
+command=TZ=Australia/Melbourne date '+%d %b %Y %l:%M %p %Z'
 separator=false
 
 #[time1]

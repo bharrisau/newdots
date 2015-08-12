@@ -1,0 +1,13 @@
+#
+# ~/.zprofile
+#
+
+PATH=~/bin:$PATH
+export PATH
+
+#eval $(ssh-agent)
+
+export TOOLCHAIN_LIBS_PATH='/usr/lib/gcc/arm-none-eabi/4.8.3/'
+
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx -- -dpi 96
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 && -e /usr/bin/startx ]] && exec startx
