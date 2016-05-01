@@ -1,17 +1,25 @@
-# More minimal zsh based on https://github.com/ivyl/zsh-config/blob/master/zshrc
-
 [ -z "$PS1" ] && return
+
+fpath=(~/.zsh/completion $fpath)
+
+autoload -U compinit
+compinit
 
 DEFAULT_USER=ben
 
-# Config collections (none at the moment)
-. ~/.zsh/aliases.zsh
-. ~/.zsh/prompt.zsh
-. ~/.zsh/completion.zsh
-. ~/.zsh/zbell.zsh
+source ~/.zsh/zbell.zsh
+source ~/.zsh/antigen.zsh
 
-# Accrue settings in a custom until it is worth moving to a config
-[ -e ~/.zsh/custom.zsh ] && . ~/.zsh/custom.zsh
+antigen use oh-my-zsh
 
-# newly opened terminal should clean prompt
-true
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions src
+hash brew 2>/dev/null && antigen bundle brew
+hash git 2>/dev/null && antigen bundle git
+hash git 2>/dev/null && antigen bundle git-extras
+hash tmux 2>/dev/null && antigen bundle tmux
+antigen bundle command-not-found
+
+antigen theme agnoster
+
+antigen apply

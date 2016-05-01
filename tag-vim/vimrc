@@ -12,11 +12,10 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Rid of escape
-inoremap jk <esc>
-inoremap kj <esc>
+inoremap fd <esc>
 
 set background=dark
-colorscheme solarized
+colorscheme gotham256
 set spelllang=en_gb
 
 set hidden
