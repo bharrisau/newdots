@@ -3,6 +3,10 @@
 #
 
 PATH=~/.local/bin:~/bin:/usr/local/bin:/usr/local/sbin:$PATH
-export PATH
 
-#eval $(ssh-agent)
+# Set misc PATH variables
+if hash ruby &> /dev/null; then
+  PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+fi
+
+export PATH

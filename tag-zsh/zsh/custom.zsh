@@ -1,6 +1,3 @@
-# Default PATH
-PATH=$PATH:$HOME/.local/bin
-
 # Default editor
 EDITOR=vim
 export EDITOR
@@ -10,7 +7,7 @@ BROWSER=firefox
 export BROWSER
 
 # Ledger file
-LEDGER=~/ledger/personal.dat
+LEDGER=~/doc/bank/personal.dat
 export LEDGER
 
 # ls colours
@@ -39,11 +36,6 @@ setopt HIST_ALLOW_CLOBBER
 # Change word separator
 autoload -U select-word-style
 select-word-style bash
-
-# Set misc PATH variables
-if hash ruby &> /dev/null; then
-  PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-fi
 
 #export PATH
 # export MANPATH="/usr/local/man:$MANPATH"
