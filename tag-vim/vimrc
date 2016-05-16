@@ -1,4 +1,10 @@
-call pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'whatyouhide/vim-gotham'
+Plug 'flazz/vim-colorschemes'
+
+call plug#end()
+
 syntax enable
 scriptencoding utf-8
 set encoding=utf-8
@@ -13,6 +19,21 @@ noremap <Right> <NOP>
 
 " Rid of escape
 inoremap fd <esc>
+
+" Scroll before hitting edges
+set scrolloff=5
+
+" Couple other tips
+set matchpairs+=<:>
+nnoremap Q @
+nnoremap @ Q
+set relativenumber number
+
+" Easy buffer movements
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 set background=dark
 colorscheme gotham256
