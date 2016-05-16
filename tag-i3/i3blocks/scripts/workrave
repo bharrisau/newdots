@@ -1,4 +1,5 @@
 #!/bin/bash
+exit
 
 export QT_SELECT=4
 SESSION_BUS="org.workrave.Workrave"

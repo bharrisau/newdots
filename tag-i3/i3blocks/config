@@ -2,10 +2,6 @@ command=~/.i3blocks/scripts/$BLOCK_NAME
 interval=5
 separator_block_width=15
 
-[toggl]
-command=~/.local/bin/toggl now
-interval=10
-
 [ssh-key]
 command=$(ssh-add -l > /dev/null) && echo "Y" || echo "N"
 
@@ -13,27 +9,33 @@ command=$(ssh-add -l > /dev/null) && echo "Y" || echo "N"
 signal=10
 
 [memory]
-command=/usr/libexec/i3blocks/memory
+command=/usr/lib/i3blocks/memory
 separator=false
 interval=30
 
 [swap]
-command=/usr/libexec/i3blocks/memory
+command=/usr/lib/i3blocks/memory
 instance=swap
 interval=30
 
 [disk-home]
-command=/usr/libexec/i3blocks/disk 20
+command=/usr/lib/i3blocks/disk 20
 separator=false
 interval=30
 
 [disk-root]
-command=/usr/libexec/i3blocks/disk 20
+command=/usr/lib/i3blocks/disk 20
+separator=false
 instance=/
 interval=30
 
+[disk-var]
+command=/usr/lib/i3blocks/disk 20
+instance=/var
+interval=30
+
 [wireless]
-command=/usr/libexec/i3blocks/network
+command=/usr/lib/i3blocks/iface
 instance=wlan0
 color=#00FF00
 interval=10
@@ -46,7 +48,8 @@ color=#00FF00
 separator=false
 
 [ethernet]
-command=/usr/libexec/i3blocks/network instance=net0 E
+command=/usr/lib/i3blocks/iface
+instance=net0
 color=#00FF00
 interval=10
 #separator=false
@@ -55,14 +58,14 @@ interval=10
 #interval=6000
 
 [cpu]
-command=/usr/libexec/i3blocks/cpu_usage
+command=/usr/lib/i3blocks/cpu_usage
 interval=10
 
 [battery]
-command=/usr/libexec/i3blocks/battery BAT1 20
+command=/usr/lib/i3blocks/battery BAT1 20
 interval=30
 
-[workrave]
+[pomodoro]
 interval=1
 
 [time]
