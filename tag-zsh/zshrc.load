@@ -1,6 +1,7 @@
 [ -z "$PS1" ] && return
 
 fpath=(~/.zsh/completion $fpath)
+[ -e ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
 autoload -U compinit
 compinit
@@ -8,10 +9,17 @@ compinit
 DEFAULT_USER=ben
 REPORTTIME=5
 
+TIMEFMT="\
+
+ %J
+  user: %U | system: %S | cpu: %P | total: %*E
+"
+
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug
     source ~/.zplug/init.zsh && zplug update --self
 fi
+
 source ~/.zplug/zplug
 
 zplug "zsh-users/zsh-syntax-highlighting"
