@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # If .zshrc.load exists, make sure loader is appended
 
