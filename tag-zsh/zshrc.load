@@ -6,20 +6,33 @@ autoload -U compinit
 compinit
 
 DEFAULT_USER=ben
+REPORTTIME=5
 
-source ~/.zsh/zbell.zsh
-source ~/.zsh/antigen.zsh
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+source ~/.zplug/zplug
 
-antigen use oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
 
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions src
-hash brew 2>/dev/null && antigen bundle brew
-hash git 2>/dev/null && antigen bundle git
-hash git 2>/dev/null && antigen bundle git-extras
-hash tmux 2>/dev/null && antigen bundle tmux
-antigen bundle command-not-found
+zplug "plugins/brew", from:oh-my-zsh, if:"hash brew"
+zplug "plugins/git", from:oh-my-zsh, if:"hash git"
+zplug "plugins/git-extras", from:oh-my-zsh, if:"hash git"
+zplug "plugins/tmux", from:oh-my-zsh, if:"hash tmux"
 
-antigen theme agnoster
+zplug "plugins/command-not-found", from:oh-my-zsh
 
-antigen apply
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:10
+zplug "themes/agnoster", from:oh-my-zsh, nice:11
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
