@@ -9,7 +9,6 @@ command=$(ssh-add -l > /dev/null) && echo "Y" || echo "N"
 signal=10
 
 [memory]
-command=/usr/lib/i3blocks/memory
 separator=false
 interval=30
 
